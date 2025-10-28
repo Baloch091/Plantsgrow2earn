@@ -1,139 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Growplants — Grow Plants, Earn B3TR</title>
-  <meta name="description" content="Growplants — grow plants, upload clear photos and earn B3TR tokens. Simple, attractive and eco-friendly." />
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growplants</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .hamburger {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 15px;
+            background-color: #333;
+            color: white;
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+            border-radius: 5px;
+        }
+        .menu li {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .menu li:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 20px;
+            display: none;
+        }
+        #home {
+            display: block;
+        }
+        .plants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .plants-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo">🌱</div>
-        <div class="brand-text">
-          <h1>Growplants</h1>
-          <small>Grow plants — Earn B3TR</small>
-        </div>
-      </div>
-
-      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">&#9776;</button>
-
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#ads">Ads</a></li>
-          <li><a href="#shop">Shop</a></li>
+    <header>
+        <h1>Growplants</h1>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <ul class="menu" id="menu">
+            <li onclick="showSection('home')">Home</li>
+            <li onclick="showSection('about')">About</li>
+            <li onclick="showSection('ads')">Ads</li>
+            <li onclick="showSection('shop')">Shop</li>
         </ul>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <h2>Grow Plants. Capture Growth. Earn B3TR.</h2>
-        <p>Upload real & clear plant photos and get rewarded. Help the planet, build a greener future.</p>
-        <a class="btn btn-primary" href="#about">Learn More</a>
-      </div>
+    <section id="home">
+        <h2>Welcome to Growplants</h2>
+        <div class="plants-grid">
+            <img src="https://media.istockphoto.com/id/956366756/photo/tree-growth-three-steps-in-nature-and-beautiful-morning-lighting.jpg?s=612x612&w=0&k=20&c=0RR1skhLmMxHxbVMClJAi3XOtQ1fnfjUNusssi_3La4=" alt="Growing Plants 1">
 
-      <div class="hero-cards">
-        <div class="card">
-          <img src="1000057865.png" alt="Plant sample" />
-          <h3>Real Photos</h3>
-          <p>Only clear and original plant photos qualify for rewards.</p>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800&auto=format&fit=crop&q=80" alt="Plant 2" />
-          <h3>B3TR Rewards</h3>
-          <p>Capture growth and receive B3TR tokens for verified uploads.</p>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&auto=format&fit=crop&q=80" alt="Plant 3" />
-          <h3>Community</h3>
-          <p>Share progress, inspire others and grow together.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<grok-card data-id="bace31" data-type="image_card"></grok-card>
 
-  <!-- About / Benefits / Rules -->
-  <section id="about" class="section about">
-    <div class="container">
-      <div class="section-header">
+            <img src="https://i2-prod.dailyrecord.co.uk/incoming/article29994231.ece/ALTERNATES/s1227b/0_JS215432967.jpg" alt="Growing Plants 2">
+
+<grok-card data-id="5eeed6" data-type="image_card"></grok-card>
+
+            <img src="https://www.easytogrowbulbs.com/cdn/shop/articles/plumeria-for-sale.jpg?v=1557257275&width=1100" alt="Growing Plants 3">
+
+<grok-card data-id="ae0bbc" data-type="image_card"></grok-card>
+
+        </div>
+        <footer>
+            <h3>Contact Us</h3>
+            <p>Follow us on Twitter: <a href="https://twitter.com/yourusername" target="_blank">@yourusername</a> (Replace with your actual Twitter handle)</p>
+        </footer>
+    </section>
+
+    <section id="about">
         <h2>About Growplants</h2>
-        <p>Growplants ek simple initiative hai jahan log plants ugate hain aur clear photos upload karne par B3TR rewards milte hain.</p>
-      </div>
+        <h3>Benefits of Growing Plants</h3>
+        <ul>
+            <li>Improves air quality by absorbing CO2 and releasing oxygen.</li>
+            <li>Reduces stress and promotes mental health.</li>
+            <li>Enhances home aesthetics and provides fresh produce.</li>
+            <li>Supports biodiversity and eco-friendly living.</li>
+            <li>Teaches patience and responsibility.</li>
+        </ul>
+        <h3>Rewards</h3>
+        <p>Upload clear photos of your growing plants and earn B3TR Tokens as rewards!</p>
+        <h3>Rules</h3>
+        <ul>
+            <li>Photos must be clear, real, and not blurred.</li>
+            <li>No edited or fake images allowed.</li>
+            <li>Photos should show actual plant growth stages.</li>
+            <li>One submission per plant per week.</li>
+            <li>Rewards distributed based on community verification.</li>
+        </ul>
+    </section>
 
-      <div class="split">
-        <div class="col">
-          <h3>🌿 Benefits of Growing Plants</h3>
-          <ul class="benefits">
-            <li>Clean air & environmental improvement</li>
-            <li>Mental well-being and natural beauty</li>
-            <li>Community recognition & token rewards</li>
-          </ul>
+    <section id="ads">
+        <h2>Ads</h2>
+        <p>Coming Soon!</p>
+    </section>
 
-          <h3>🏆 Rewards & Rules</h3>
-          <ul class="rules">
-            <li>✅ Har clear, original aur real plant photo par B3TR reward.</li>
-            <li>❌ Blurry, edited ya duplicated photos qualify nahi karenge.</li>
-            <li>📸 Photo mein plant clearly visible hona chahiye (no heavy filters, no overlays).</li>
-            <li>🔁 Multiple photos of the same plant accepted but must show different growth stages.</li>
-            <li>🧾 Tokens will be issued after verification.</li>
-          </ul>
-        </div>
+    <section id="shop">
+        <h2>Shop</h2>
+        <p>Coming Soon!</p>
+    </section>
 
-        <aside class="col gallery">
-          <h3>Gallery</h3>
-          <div class="grid">
-            <img src="1000057865.png" alt="Gallery 1" />
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800&auto=format&fit=crop&q=80" alt="Gallery 2" />
-            <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&auto=format&fit=crop&q=80" alt="Gallery 3" />
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=80" alt="Gallery 4" />
-          </div>
-          <p class="small">Tip: Upload clear, focused photos showing the full plant or a close-up with good lighting.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
 
-  <!-- Ads -->
-  <section id="ads" class="section coming">
-    <div class="container center">
-      <h2>Ads</h2>
-      <p>Coming Soon...</p>
-    </div>
-  </section>
-
-  <!-- Shop -->
-  <section id="shop" class="section coming alt">
-    <div class="container center">
-      <h2>Shop</h2>
-      <p>Coming Soon...</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="contact">
-        <h4>Contact Us</h4>
-        <p>Follow us on Twitter:</p>
-        <p><a href="https://x.com/Growplants2Earn?t=QMexxYu9_nY5AjMKorGFHA&s=09" target="_blank" rel="noopener noreferrer">@Growplants2Earn</a></p>
-      </div>
-
-      <div class="copyright">
-        <p>© <span id="year"></span> Growplants • Built for plant lovers</p>
-      </div>
-    </div>
-  </footer>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(sec) {
+                sec.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+            toggleMenu(); // Close menu after selection
+        }
+    </script>
 </body>
-        </html>
-        
+</html>
