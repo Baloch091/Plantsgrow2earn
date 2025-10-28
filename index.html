@@ -1,78 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Growplants</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Growplants — Grow Plants, Earn B3TR</title>
+  <meta name="description" content="Growplants — grow plants, upload clear photos and earn B3TR tokens. Simple, attractive and eco-friendly." />
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <div class="logo">🌱 Growplants</div>
-    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-    <nav id="nav">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#ads">Ads</a></li>
-        <li><a href="#shop">Shop</a></li>
-      </ul>
-    </nav>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">🌱</div>
+        <div class="brand-text">
+          <h1>Growplants</h1>
+          <small>Grow plants — Earn B3TR</small>
+        </div>
+      </div>
+
+      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">&#9776;</button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#ads">Ads</a></li>
+          <li><a href="#shop">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
+  <!-- Hero -->
   <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Grow Plants, Grow Rewards</h1>
-      <p>Capture your plant growth and earn B3TR tokens 🌿</p>
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h2>Grow Plants. Capture Growth. Earn B3TR.</h2>
+        <p>Upload real & clear plant photos and get rewarded. Help the planet, build a greener future.</p>
+        <a class="btn btn-primary" href="#about">Learn More</a>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <img src="1000057865.png" alt="Plant sample" />
+          <h3>Real Photos</h3>
+          <p>Only clear and original plant photos qualify for rewards.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800&auto=format&fit=crop&q=80" alt="Plant 2" />
+          <h3>B3TR Rewards</h3>
+          <p>Capture growth and receive B3TR tokens for verified uploads.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&auto=format&fit=crop&q=80" alt="Plant 3" />
+          <h3>Community</h3>
+          <p>Share progress, inspire others and grow together.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="about" class="about">
-    <h2>About Growplants</h2>
-    <p>
-      Growplants ek simple initiative hai jo logon ko plants grow karne aur environment improve karne
-      ke liye reward karta hai. Har real, clear aur original plant photo upload karne par
-      tumhe <strong>B3TR Tokens</strong> milte hain.
-    </p>
+  <!-- About / Benefits / Rules -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Growplants</h2>
+        <p>Growplants ek simple initiative hai jahan log plants ugate hain aur clear photos upload karne par B3TR rewards milte hain.</p>
+      </div>
 
-    <h3>🌿 Benefits of Growing Plants</h3>
-    <ul>
-      <li>Clean air and better environment</li>
-      <li>Peace of mind and positivity</li>
-      <li>Rewards in B3TR Tokens</li>
-    </ul>
+      <div class="split">
+        <div class="col">
+          <h3>🌿 Benefits of Growing Plants</h3>
+          <ul class="benefits">
+            <li>Clean air & environmental improvement</li>
+            <li>Mental well-being and natural beauty</li>
+            <li>Community recognition & token rewards</li>
+          </ul>
 
-    <h3>🏆 Rewards & Rules</h3>
-    <ul>
-      <li>Each clear and real photo = Reward in B3TR</li>
-      <li>Blur or fake photos will not be rewarded</li>
-      <li>Stay consistent — help the planet and earn!</li>
-    </ul>
+          <h3>🏆 Rewards & Rules</h3>
+          <ul class="rules">
+            <li>✅ Har clear, original aur real plant photo par B3TR reward.</li>
+            <li>❌ Blurry, edited ya duplicated photos qualify nahi karenge.</li>
+            <li>📸 Photo mein plant clearly visible hona chahiye (no heavy filters, no overlays).</li>
+            <li>🔁 Multiple photos of the same plant accepted but must show different growth stages.</li>
+            <li>🧾 Tokens will be issued after verification.</li>
+          </ul>
+        </div>
 
-    <div class="gallery">
-      <img src="1000057865.png" alt="Plant 1">
-      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800" alt="Plant 2">
-      <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800" alt="Plant 3">
+        <aside class="col gallery">
+          <h3>Gallery</h3>
+          <div class="grid">
+            <img src="1000057865.png" alt="Gallery 1" />
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800&auto=format&fit=crop&q=80" alt="Gallery 2" />
+            <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&auto=format&fit=crop&q=80" alt="Gallery 3" />
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=80" alt="Gallery 4" />
+          </div>
+          <p class="small">Tip: Upload clear, focused photos showing the full plant or a close-up with good lighting.</p>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <section id="ads" class="coming-soon">
-    <h2>Ads</h2>
-    <p>Coming Soon...</p>
+  <!-- Ads -->
+  <section id="ads" class="section coming">
+    <div class="container center">
+      <h2>Ads</h2>
+      <p>Coming Soon...</p>
+    </div>
   </section>
 
-  <section id="shop" class="coming-soon">
-    <h2>Shop</h2>
-    <p>Coming Soon...</p>
+  <!-- Shop -->
+  <section id="shop" class="section coming alt">
+    <div class="container center">
+      <h2>Shop</h2>
+      <p>Coming Soon...</p>
+    </div>
   </section>
 
-  <footer>
-    <p>🌱 Connect with us:
-      <a href="https://x.com/Growplants2Earn?t=QMexxYu9_nY5AjMKorGFHA&s=09" target="_blank">Twitter</a>
-    </p>
-    <p>© 2025 Growplants</p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="contact">
+        <h4>Contact Us</h4>
+        <p>Follow us on Twitter:</p>
+        <p><a href="https://x.com/Growplants2Earn?t=QMexxYu9_nY5AjMKorGFHA&s=09" target="_blank" rel="noopener noreferrer">@Growplants2Earn</a></p>
+      </div>
+
+      <div class="copyright">
+        <p>© <span id="year"></span> Growplants • Built for plant lovers</p>
+      </div>
+    </div>
   </footer>
 </body>
-  </html>
-  
+        </html>
+        
