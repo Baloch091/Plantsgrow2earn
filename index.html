@@ -80,6 +80,22 @@
         a:hover {
             text-decoration: underline;
         }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        video {
+            display: block;
+            margin: 10px auto;
+        }
     </style>
 </head>
 <body>
@@ -91,6 +107,8 @@
             <li onclick="showSection('about')">About</li>
             <li onclick="showSection('ads')">Ads</li>
             <li onclick="showSection('shop')">Shop</li>
+            <li onclick="showSection('partnership')">Partnership</li>
+            <li onclick="showSection('earn')">Earn Reward</li>
         </ul>
     </header>
 
@@ -98,21 +116,12 @@
         <h2>Welcome to Growplants</h2>
         <div class="plants-grid">
             <img src="https://media.istockphoto.com/id/956366756/photo/tree-growth-three-steps-in-nature-and-beautiful-morning-lighting.jpg?s=612x612&w=0&k=20&c=0RR1skhLmMxHxbVMClJAi3XOtQ1fnfjUNusssi_3La4=" alt="Growing Plants 1">
-
-<grok-card data-id="bace31" data-type="image_card"></grok-card>
-
             <img src="https://i2-prod.dailyrecord.co.uk/incoming/article29994231.ece/ALTERNATES/s1227b/0_JS215432967.jpg" alt="Growing Plants 2">
-
-<grok-card data-id="5eeed6" data-type="image_card"></grok-card>
-
             <img src="https://www.easytogrowbulbs.com/cdn/shop/articles/plumeria-for-sale.jpg?v=1557257275&width=1100" alt="Growing Plants 3">
-
-<grok-card data-id="ae0bbc" data-type="image_card"></grok-card>
-
         </div>
         <footer>
             <h3>Contact Us</h3>
-            <p>Follow us on Twitter: <a href="https://x.com/Growplants2Earn?t=oNvpbT5zRBD1RcdoxrAYaw&s=09" target="_blank">@Growplants2Earn</a> </p>
+            <p>Follow us on Twitter: <a href="https://twitter.com/yourusername" target="_blank">@yourusername</a> (Replace with your actual Twitter handle)</p>
         </footer>
     </section>
 
@@ -148,6 +157,24 @@
         <p>Coming Soon!</p>
     </section>
 
+    <section id="partnership">
+        <h2>Partnership</h2>
+        <p>Coming Soon!</p>
+    </section>
+
+    <section id="earn">
+        <h2>Earn Reward</h2>
+        <button id="connectWallet">Connect VeWorld Wallet</button>
+        <div id="walletStatus"></div>
+        <div id="cameraSection" style="display:none;">
+            <button id="openCamera">Open Camera (Camera Icon)</button>
+            <video id="video" width="320" height="240" autoplay></video>
+            <button id="capture" style="display:none;">Capture Photo</button>
+            <canvas id="canvas" style="display:none;"></canvas>
+        </div>
+        <div id="result"></div>
+    </section>
+
     <script>
         function toggleMenu() {
             var menu = document.getElementById('menu');
@@ -160,8 +187,93 @@
                 sec.style.display = 'none';
             });
             document.getElementById(sectionId).style.display = 'block';
-            toggleMenu(); // Close menu after selection
+            toggleMenu();
+        }
+
+        // Wallet Connection (Requires VeWorld extension installed)
+        document.getElementById('connectWallet').onclick = async function() {
+            if (window.vechain) {
+                try {
+                    // Simple Connex init (assuming VeWorld injects it)
+                    const connex = window.vechain.newConnex({ node: 'https://testnet.vechain.org/' }); // Use mainnet for production: 'https://mainnet.vechain.org/'
+                    const certMessage = {
+                        purpose: 'identification',
+                        payload: {
+                            type: 'text',
+                            content: 'Connect to Growplants for rewards'
+                        }
+                    };
+                    const certResponse = await connex.vendor.sign('cert', certMessage).request();
+                    const address = certResponse.annex.address;
+                    document.getElementById('walletStatus').innerText = `Connected: ${address}`;
+                    document.getElementById('cameraSection').style.display = 'block';
+                } catch (error) {
+                    document.getElementById('walletStatus').innerText = 'Connection failed: ' + error.message;
+                }
+            } else {
+                document.getElementById('walletStatus').innerText = 'VeWorld wallet not installed. Install from Chrome Web Store.';
+            }
+        };
+
+        // Camera
+        document.getElementById('openCamera').onclick = async function() {
+            try {
+                const video = document.getElementById('video');
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                document.getElementById('capture').style.display = 'block';
+            } catch (error) {
+                document.getElementById('result').innerText = 'Camera access denied: ' + error.message;
+            }
+        };
+
+        // Capture and check photo
+        document.getElementById('capture').onclick = function() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const img = new Image();
+            img.src = canvas.toDataURL('image/png');
+            img.onload = function() {
+                if (isBlurry(img)) {
+                    document.getElementById('result').innerText = 'Photo not valid for reward. Try again.';
+                } else {
+                    document.getElementById('result').innerText = 'Reward: 0.5 B3TR Token sent to your wallet! (Mock - for real, integrate smart contract)';
+                }
+            };
+        };
+
+        // Blur detection function
+        function isBlurry(image) {
+            const canvas = document.createElement('canvas');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0);
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            const gray = [];
+            for (let i = 0; i < data.length; i += 4) {
+                const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
+                gray.push(brightness);
+            }
+            const laplacian = [];
+            const width = canvas.width;
+            const height = canvas.height;
+            for (let y = 1; y < height - 1; y++) {
+                for (let x = 1; x < width - 1; x++) {
+                    const idx = y * width + x;
+                    const sum = -gray[idx - width - 1] - gray[idx - width] - gray[idx - width + 1]
+                        - gray[idx - 1] + 8 * gray[idx] - gray[idx + 1]
+                        - gray[idx + width - 1] - gray[idx + width] - gray[idx + width + 1];
+                    laplacian.push(sum * sum);
+                }
+            }
+            const mean = laplacian.reduce((a, b) => a + b, 0) / laplacian.length;
+            const variance = laplacian.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / laplacian.length;
+            return variance < 100; // Adjust threshold as needed (lower variance = blurrier)
         }
     </script>
 </body>
-</html>
+    </html>
