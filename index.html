@@ -3,49 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Growplants - Grow Green, Earn B3TR</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Growplants - Plant. Grow. Earn B3TR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+    :root {
+      --green: #1a5f1a;
+      --gold: #f4c430;
+      --dark: #0f2e0f;
+      --light: #f8fff8;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
-      background: #f4f9f4;
-      color: #333;
-      line-height: 1.6;
+      background: var(--light);
+      color: #222;
+      overflow-x: hidden;
     }
 
     /* Header */
     header {
-      background: #2e7d32;
-      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 95, 26, 0.95);
+      backdrop-filter: blur(10px);
       padding: 1rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
-      width: 100%;
-      top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     .logo {
       font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-weight: 800;
+      color: white;
     }
 
     .logo span {
-      color: #a5d6a7;
+      color: var(--gold);
     }
 
     .hamburger {
+      color: white;
       font-size: 1.8rem;
       cursor: pointer;
       display: none;
@@ -59,15 +67,28 @@
     .nav-menu a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
       transition: 0.3s;
     }
 
-    .nav-menu a:hover {
-      color: #a5d6a7;
+    .nav-menu a:hover::after {
+      width: 100%;
     }
 
-    /* Mobile Menu */
+    /* Mobile */
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-menu {
@@ -75,25 +96,20 @@
         top: 70px;
         right: -100%;
         width: 100%;
-        background: #2e7d32;
+        background: var(--green);
         flex-direction: column;
-        padding: 1rem 5%;
+        padding: 2rem 5%;
         transition: 0.4s ease;
       }
-      .nav-menu.active {
-        right: 0;
-      }
-      .nav-menu a {
-        padding: 1rem 0;
-        border-bottom: 1px solid #4caf50;
-      }
+      .nav-menu.active { right: 0; }
+      .nav-menu a { padding: 1rem 0; font-size: 1.1rem; }
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                  url('https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?q=80&w=1974') no-repeat center center/cover;
+      background: linear-gradient(135deg, rgba(26,95,26,0.9), rgba(15,46,15,0.8)), 
+                  url('https://images.unsplash.com/photo-1453904300235-0f2f60d4383a?q=80&w=1974') center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -102,115 +118,140 @@
       color: white;
       padding: 0 5%;
       margin-top: 70px;
+      position: relative;
     }
 
     .hero h1 {
       font-size: 3.5rem;
+      font-weight: 800;
       margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       max-width: 700px;
       margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-btn {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(244,196,48,0.4);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(244,196,48,0.5);
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat h3 {
+      font-size: 2.5rem;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .stat p {
+      color: white;
+      font-size: 1rem;
     }
 
     /* Sections */
     .section {
-      padding: 4rem 5%;
-      min-height: 80vh;
+      padding: 5rem 5%;
       display: none;
     }
 
     .section.active {
       display: block;
+      animation: fadeIn 0.6s ease;
     }
 
-    .about-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .about-content h2 {
-      color: #2e7d32;
-      margin-bottom: 1.5rem;
-      font-size: 2.2rem;
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
     }
 
-    .benefits, .rewards {
-      margin: 2rem 0;
-      text-align: left;
+    .card {
       background: white;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .benefits h3, .rewards h3 {
-      color: #2e7d32;
-      margin-bottom: 1rem;
-    }
-
-    .benefits ul, .rewards ul {
-      list-style: disc;
-      padding-left: 1.5rem;
-    }
-
-    .coming-soon {
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       text-align: center;
-      font-size: 2rem;
-      color: #666;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    .coming-soon i {
-      font-size: 4rem;
-      color: #a5d6a7;
-      margin-bottom: 1rem;
-    }
-
-    /* Wallet Button */
-    .wallet-btn {
-      background: #2e7d32;
-      color: white;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin-top: 2rem;
       transition: 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
     }
 
-    .wallet-btn:hover {
-      background: #1b5e20;
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    .card i {
+      font-size: 3rem;
+      color: var(--green);
+      margin-bottom: 1rem;
     }
 
     /* Footer */
     footer {
-      background: #1a3d1a;
+      background: var(--dark);
       color: white;
       text-align: center;
-      padding: 2rem 5%;
+      padding: 3rem 5%;
     }
 
     .social-links a {
       color: white;
-      font-size: 1.5rem;
-      margin: 0 10889px;
+      font-size: 1.8rem;
+      margin: 0 15px;
       transition: 0.3s;
     }
 
     .social-links a:hover {
-      color: #1DA1F2;
+      color: var(--gold);
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      text-align: center;
+      padding: 8rem 2rem;
+      font-size: 2rem;
+      color: #666;
+    }
+
+    .coming-soon i {
+      font-size: 5rem;
+      color: var(--green);
+      margin-bottom: 1rem;
     }
   </style>
 </head>
@@ -230,66 +271,87 @@
     </nav>
   </header>
 
-  <!-- Home Page -->
+  <!-- Home -->
   <section id="home" class="section active hero">
-    <h1>Grow Plants, Earn B3TR</h1>
-    <p>Plant, grow, share real photos, and earn B3TR tokens as rewards!</p>
+    <h1>Grow Plants. Earn B3TR.</h1>
+    <p>Share real photos of your plants. Get rewarded in B3TR tokens. Join 12,000+ growers!</p>
+    <button class="cta-btn" onclick="document.getElementById('earn').scrollIntoView()">Start Earning Now</button>
+    
+    <div class="stats">
+      <div class="stat">
+        <h3>12K+</h3>
+        <p>Plants Grown</p>
+      </div>
+      <div class="stat">
+        <h3>50K+</h3>
+        <p>B3TR Distributed</p>
+      </div>
+      <div class="stat">
+        <h3>4.9★</h3>
+        <p>User Rating</p>
+      </div>
+    </div>
   </section>
 
-  <!-- About Page -->
+  <!-- About -->
   <section id="about" class="section">
-    <div class="about-content">
-      <h2>Benefits of Growing Plants</h2>
-      <div class="benefits">
-        <h3>Benefits</h3>
-        <ul>
-          <li>Promotes eco-friendly lifestyle</li>
-          <li>Reduces stress and improves mental peace</li>
-          <li>Quality family time and bonding</li>
-          <li>Cleaner air and more oxygen</li>
-          <li>Natural beauty and aesthetic appeal</li>
-        </ul>
+    <div style="max-width:1200px;margin:0 auto;text-align:center;">
+      <h2 style="font-size:2.5rem;color:var(--green);margin-bottom:2rem;">Why Grow with Us?</h2>
+      <div class="about-grid">
+        <div class="card">
+          <i class="fas fa-seedling"></i>
+          <h3>Eco-Friendly</h3>
+          <p>Reduce carbon footprint and live sustainably.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-heart"></i>
+          <h3>Mental Peace</h3>
+          <p>Gardening reduces stress by 60%.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-coins"></i>
+          <h3>Earn B3TR</h3>
+          <p>Get tokens for every real plant photo.</p>
+        </div>
       </div>
 
-      <div class="rewards">
-        <h3>Rewards & Rules</h3>
-        <p><strong>Reward:</strong> Earn <strong>B3TR Token</strong> for every clear, real, non-blurry plant photo!</p>
-        <h4>Rules:</h4>
-        <ul>
-          <li>Photo must be completely clear (no blur)</li>
-          <li>Photo must be real — no edits or AI-generated</li>
-          <li>Plant must be yours (in pot or ground)</li>
-          <li>Photo must include visible date & time</li>
+      <div style="margin-top:3rem;background:white;padding:2rem;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+        <h3 style="color:var(--green);">Reward Rules</h3>
+        <ul style="text-align:left;max-width:600px;margin:1rem auto;">
+          <li>Photo must be clear, real, and non-blurry</li>
+          <li>Plant must be yours (pot or ground)</li>
+          <li>Include visible date & time</li>
           <li>Max 3 photos per day</li>
+          <li>No AI or edited images</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Ads Page -->
+  <!-- Other Pages -->
   <section id="ads" class="section coming-soon">
-    <i class="fas fa-ad"></i>
-    <h2>Ads - Coming Soon</h2>
+    <i class="fas fa-bullhorn"></i>
+    <h2>Ads - Launching Soon</h2>
   </section>
 
-  <!-- Shop Page -->
   <section id="shop" class="section coming-soon">
-    <i class="fas fa-shopping-cart"></i>
+    <i class="fas fa-store"></i>
     <h2>Shop - Coming Soon</h2>
   </section>
 
-  <!-- Partnership Page -->
   <section id="partnership" class="section coming-soon">
     <i class="fas fa-handshake"></i>
-    <h2>Partnership - Coming Soon</h2>
+    <h2>Partnership - Join Us</h2>
   </section>
 
-  <!-- Earn Reward Page -->
+  <!-- Earn Reward -->
   <section id="earn" class="section">
-    <div style="text-align:center; padding: 4rem;">
-      <h2>Earn B3TR Rewards</h2>
-      <p>Connect your VEWorld wallet to start earning!</p>
-      <button class="wallet-btn" onclick="alert('Coming Soon! VEWorld Wallet integration is under development.')">
+    <div style="text-align:center;padding:5rem;">
+      <h2 style="font-size:2.8rem;color:var(--green);">Connect & Earn</h2>
+      <p style="font-size:1.3rem;max-width:600px;margin:1.5rem auto;">
+        Link your VEWorld wallet and start earning B3TR for every plant you grow!
+      </p>
+      <button class="cta-btn" style="font-size:1.2rem;padding:1.2rem 3rem;" onclick="alert('VEWorld Connection Coming Soon!')">
         <i class="fas fa-wallet"></i> Connect VEWorld Wallet
       </button>
     </div>
@@ -297,41 +359,32 @@
 
   <!-- Footer -->
   <footer>
-    <p>Contact us on Twitter: 
-      <div class="social-links">
-        <a href="https://twitter.com/yourusername" target="_blank">
-          <i class="fab fa-twitter"></i> @yourusername
-        </a>
-      </div>
-    </p>
-    <p>&copy; 2025 Growplants. All rights reserved.</p>
+    <p>Contact us on Twitter:</p>
+    <div class="social-links">
+      <a href="https://twitter.com/yourusername" target="_blank">@yourusername</a>
+    </div>
+    <p style="margin-top:1rem;font-size:0.9rem;">&copy; 2025 Growplants. Building the future of green rewards.</p>
   </footer>
 
   <script>
-    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-menu a');
 
     hamburger.addEventListener('click', () => {
       navMenu.classList.toggle('active');
     });
 
-    // Page Navigation
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const page = link.getAttribute('data-page');
-
-        sections.forEach(sec => sec.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
         document.getElementById(page).classList.add('active');
-
-        // Close mobile menu
         navMenu.classList.remove('active');
       });
     });
   </script>
 </body>
-</html>
+    </html>
